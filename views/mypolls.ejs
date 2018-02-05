@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:80px; }
+    </style>
+</head>
+<body>
+<header>
+  <!--<a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>-->
+  <a href="/polls">fcc-voting</a>
+  <div>
+    <a class="btn" href="/polls">Home</a>
+    <!--<p><%=user.twitter.username%></p>-->
+    
+    <% if (user) { %>
+      <p><%=user.twitter.displayName%></p>
+      <a class="btn" href="/mypolls">My Polls</a>
+      <a class="btn" href="/createPoll">New Poll</a>
+      <a class="btn" href="/logout">Logout</a>
+      <% } %>
+  </div>
+</header>
+  <!--<%=polls%>-->
+  <div class="container-fluid">
+    <ul class="list-group">
+      <% for (var i=0;i<polls.length;i++) {%>
+      <li class="list-group-item"><a href="/polls/<%=polls[i]._id %>"><%=polls[i].title %></a></li>
+    <% } %>
+    </ul>
+  </div>
+<footer class="well">Created by</footer>
+</body>
+</html>

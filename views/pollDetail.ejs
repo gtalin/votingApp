@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body         { padding-top:80px; }
+    </style>
+</head>
+<body>
+<header>
+  <a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
+  <% if (user) { %>
+    <a class="btn" href="/mypolls">My Polls</a>
+    <a class="btn" href="/createPoll">New Poll</a>
+    <a class="btn" href="/logout">Logout</a>
+
+  <%} else { %>
+    <a class="btn" href="/polls">Home</a>
+    <a class="btn" href="/auth/twitter">Sign in with Twitter</a>
+    <% } %>
+</header>
+    <% console.log(pollData.options) %>
+    <!-- Poll on the left -->
+    <!-- chart on the right if there are votes else empty space -->
+
+    <!-- pollData.votes if they're not null, make a chart -->
+    <p></p>
+    <div class="container">
+  <div class="left">
+    <form action="/polls/<%=pollData._id%>" method="POST">
+      <p><%=pollData.title%></p>
+      <select name="options" placeholder="Select an option">
+        <option value="" disabled selected>Select your option</option>
+        <% for (var i=0;i<pollData.options.length;i++) { %>
+          <option value="<%=pollData.options[i]%>"><%=pollData.options[i]%></option>
+          <%}%>
+          <option value="Other>">Other</option>
+      </select>
+      <button type="submit">Submit!</button>
+    </form>
+  </div>
+  <div class="right">
+    <canvas id="doughnut-chart" width="150" height="125"></canvas>
+  </div>
+</div>
+
+<footer>Created by</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+  var pollData = <%- JSON.stringify(pollData)  %>;
+
+</script>
+<script src="js/jsscript.js"></script>
+<!--No forward js because
+  then it'll consider it like a route or something. Even without js
+it'll look inside it -->
+</body>
+</html>

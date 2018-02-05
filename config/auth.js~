@@ -1,0 +1,10 @@
+// config/auth.js
+
+// expose our config directly to our application using module.exports
+module.exports = {
+    'twitterAuth' : {
+        'consumerKey'        : '29SrAWbjPOsvfXpYVf5vSRGvr',
+        'consumerSecret'     : 'VR6taqSQwSyhxZsGKX2dGPpgyg2qMUGkfVCF9r1Z9fnyfiK7AG',
+        'callbackURL'        : 'http://localhost:8080/auth/twitter/callback'
+    }
+};
