@@ -1,27 +1,8 @@
 <!doctype html>
 <html>
-<head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
-        body         { padding-top:80px; }
-    </style>
-</head>
+<% include partials/head %>
 <body>
-<header>
-  <a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
-  <% if (user) { %>
-    <a class="btn" href="/mypolls">My Polls</a>
-    <a class="btn" href="/createPoll">New Poll</a>
-    <a class="btn" href="/logout">Logout</a>
-
-  <%} else { %>
-    <a class="btn" href="/polls">Home</a>
-    <a class="btn" href="/auth/twitter">Sign in with Twitter</a>
-    <% } %>
-</header>
+<% include partials/header %>
     <% console.log(pollData.options) %>
     <!-- Poll on the left -->
     <!-- chart on the right if there are votes else empty space -->
@@ -47,7 +28,7 @@
   </div>
 </div>
 
-<footer>Created by</footer>
+<% include partials/footer %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
   var pollData = <%- JSON.stringify(pollData)  %>;

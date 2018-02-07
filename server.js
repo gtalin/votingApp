@@ -28,6 +28,7 @@ var configDB = require('./config/database.js');
 
 app.use(morgan('dev')); // log every request to the console
 
+
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 
@@ -54,12 +55,12 @@ app.use(
 /*
 app.use(
      sass.middleware({
-         src: __dirname + '/sass', 
+         src: __dirname + '/sass',
          dest: __dirname + '/views/css',
          prefix:  '/stylesheets',
-         debug: true,         
+         debug: true,
      })
-  ); 
+  );
 */
 
 
